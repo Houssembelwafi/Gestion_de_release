@@ -1,0 +1,34 @@
+.pagination {
+    margin-top: 20px;
+  }
+  
+  
+  .pagination .page-item.disabled .page-link {
+    color: #6c757d;
+  }
+  
+  .pagination .page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .pagination .page-link {
+    border: none;
+    border-radius: 50%;
+    min-width: 32px;
+    height: 32px;
+    line-height: 1.42857143;
+    color: #007bff;
+    background-color: transparent;
+  }
+  
+  .pagination .page-link:focus {
+    box-shadow: none;
+  }
+  .modal-visible {
+    display: block !important;
+    opacity: 1 !important;
+  }
+  

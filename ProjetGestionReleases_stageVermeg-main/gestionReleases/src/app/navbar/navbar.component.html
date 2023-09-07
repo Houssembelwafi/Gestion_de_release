@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #1d4174;">
+  <div class="container">
+    <a class="navbar-brand" href="#" style="font-size: x-large; color: #f6faff; font-family:Arial, Helvetica, sans-serif">Gestion Releases</a>
+   
+
+    <div class="collapse navbar-collapse" [class.show]="isNavbarOpen">
+      <ul class="navbar-nav ml-auto" >
+        <li class="nav-item" [routerLinkActive]="['active']" style="color: #f6faff;">
+          <a class="nav-link" routerLink="/formulaire" style="color: #f6faff;font-family:Arial, Helvetica, sans-serif">Formulaire</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']" style="color: #f6faff;">
+          <a class="nav-link" routerLink="/projets" style="color: #f6faff;font-family:Arial, Helvetica, sans-serif">Liste projets-environnements</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,169 @@
+
+    <div class="page-container">
+        <div class="wrapper">
+            <div class="container">
+                <div class="card">
+                    <div class="form">
+                        <div class="left-side">
+                            <div class="left-heading">
+                                <br>
+                                <h4><strong>Gestion Des Releases</strong></h4>
+                            </div>
+                            <div class="steps-content">
+                                <h3>Étape <span class="step-number">{{ formnumber + 1 }}</span></h3>
+                                <p style="font-size: 85%;">{{ currentStepParagraph }}</p>
+                            </div>
+                            <ul class="progress-bar" style="font-size: 80%;">
+                                <li [class.active]="formnumber === 0">Projet Détails</li>
+                                <li [class.active]="formnumber === 1">Environnement(s) Détails</li>
+                            </ul>
+                        </div>
+                        <div class="right-side">
+                            <div class="main" [class.active]="formnumber === 0">
+                                <div class="text">
+                                    <h3>Projet Détails</h3>
+                                    <p style="font-size: 90%;">Entrer les détails nécessaires du projet.</p>
+                                    <hr>
+                                </div>
+                                <div class="input-text">
+                                    <div class="input-div">
+                                        <input type="text" required [(ngModel)]="nomProjet" id="nomProjet">
+                                        <span style="font-size: 90%;">Nom Projet</span>
+                                    </div>
+                                    <div class="input-div"> 
+                                        <input type="text" required require [(ngModel)]="numeroVersionProjet" name="numeroVersionProjet" style="width: 88%;flex: 1; margin-right: 5px; ">
+                                        <button type="button" class="btn btn-outline-primary" (click)="generateRandomVersion()" style="width: 10%;">
+                                            <i class="fa fa-refresh"></i>
+                                        </button>
+                                        <span style="font-size: 90%;">Numéro Version Projet</span>
+                                    </div>
+                                </div>
+                                <div class="input-text">
+                                    <div class="input-div">
+                                        <select style="font-size: 90%;" [(ngModel)]="versionJava" required>
+                                            <option value="" disabled selected style="font-size: 90%;">Version Java</option>
+                                            <option style="font-size: 90%;">8</option>
+                                            <option style="font-size: 90%;">1.8</option>
+                                            <option style="font-size: 90%;">11</option>
+                                            <option style="font-size: 90%;">15</option>
+                                            <option style="font-size: 90%;">17</option>
+                                            <option style="font-size: 90%;">19</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-div">
+                                        <select style="font-size: 90%;" [(ngModel)]="versionAngular" required>
+                                            <option value="" disabled selected style="font-size: 90%;">Version Angular</option>
+                                            <option style="font-size: 90%;">8</option>
+                                            <option style="font-size: 90%;">9</option>
+                                            <option style="font-size: 90%;">10</option>
+                                            <option style="font-size: 90%;">11</option>
+                                            <option style="font-size: 90%;">12</option>
+                                            <option style="font-size: 90%;">13</option>
+                                            <option style="font-size: 90%;">14</option>
+                                            <option style="font-size: 90%;">15</option>
+                                            <option style="font-size: 90%;">16</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="input-text">
+                                    <div class="input-div">
+                                        <select style="font-size: 90%;" [(ngModel)]="serveurWeb" required>
+                                            <option value="" disabled selected style="font-size: 90%;">Serveur Web</option>
+                                            <option style="font-size: 90%;">httpd</option>
+                                            <option style="font-size: 90%;">nginx</option>
+                                            <option style="font-size: 90%;">tomcat</option>
+                                            <option style="font-size: 90%;">jetty</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-div">
+                                        <select style="font-size: 90%;" [(ngModel)]="baseDeDonnees" required>
+                                            <option value="" disabled selected style="font-size: 90%;">Base de données</option>
+                                            <option style="font-size: 90%;">mysql</option>
+                                            <option style="font-size: 90%;">postgres</option>
+                                            <option style="font-size: 90%;">mongo</option>
+                                            <option style="font-size: 90%;">sqlite</option>
+                                            <option style="font-size: 90%;">firebase</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="buttons">
+                                    <button class="next_button" style="width: 25%;background-color: #1d4174;" (click)="nextStep()"><strong>Étape suivante</strong></button>
+                                </div>
+                            </div>
+                            <div class="main" style="overflow-y: auto;" [class.active]="formnumber === 1">
+                                <div class="text">
+                                    <div class="title-and-buttons">
+                                        <h3>Environnement(s) Détails</h3>
+                                        <div class="button-container">
+                                            <button type="button" class="buttonPM btn btn-outline-primary" (click)="addEnvironmentForm()" title="ajouter environnement">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                            <button type="button" class="buttonPM btn btn-outline-primary" (click)="removeLastEnvironmentForm()" title="supprimer environnement">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p style="font-size: 90%;">Entrer les détails nécessaires sur les environnements.</p>
+                                </div>
+                                <div *ngFor="let envIndex of environmentForms; let i = index;">
+                                    <hr>
+                                    <div class="input-text">
+                                        <div class="input-div">
+                                            <select style="font-size: 90%;" [(ngModel)]="environmentsList[envIndex].environnement" required>
+                                                <option value="" disabled selected style="font-size: 90%;">Environnement </option>
+                                                <option style="font-size: 90%;">développement</option>
+                                                <option style="font-size: 90%;">qualification</option>
+                                                <option style="font-size: 90%;">recette</option>
+                                                <option style="font-size: 90%;">pré_production</option>
+                                                <option style="font-size: 90%;">production</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-div">
+                                            <select style="font-size: 90%;" [(ngModel)]="environmentsList[envIndex].os" required>
+                                                <option value="" disabled selected style="font-size: 90%;">Système d'exploitation</option>
+                                                <option style="font-size: 90%;">windows</option>
+                                                <option style="font-size: 90%;">alpine</option>
+                                                <option style="font-size: 90%;">debian</option>
+                                                <option style="font-size: 90%;">ubuntu</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="input-text">
+                                        <div class="input-div">
+                                            <select style="font-size: 90%;" [(ngModel)]="environmentsList[envIndex].protocole" required>
+                                                <option value="" disabled selected style="font-size: 90%;">Protocole autorisé</option>
+                                                <option style="font-size: 90%;">SSH</option>
+                                                <option style="font-size: 90%;">HTTP</option>
+                                                <option style="font-size: 90%;">HTTPS</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-div">
+                                            <input type="number" id="cpu" required class="number-input" [(ngModel)]="environmentsList[envIndex].cpu">
+                                            <span style="font-size: 90%;">CPU</span>
+                                        </div>
+                                    </div>
+                                    <div class="input-text">
+                                        <div class="input-div">
+                                            <input type="number" required id="disque" class="number-input" [(ngModel)]="environmentsList[envIndex].disque">
+                                            <span style="font-size: 90%;">Espace disque</span>
+                                        </div>
+                                        <div class="input-div">
+                                            <input type="number" required id="memoire" class="number-input" [(ngModel)]="environmentsList[envIndex].memoire">
+                                            <span style="font-size: 90%;">Mémoire RAM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="buttons button_space">
+                                    <button class="back_button" style="width: 25%;" (click)="prevStep()"><strong>précédent</strong></button>
+                                    <button class="next_button" style="width: 25%;background-color: #1d4174;" (click)="submitForm()" [disabled]="submittingForm"><strong>Terminer</strong></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   

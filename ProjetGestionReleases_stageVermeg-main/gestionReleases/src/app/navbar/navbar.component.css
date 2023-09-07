@@ -1,0 +1,92 @@
+/* Add your global styles here */
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .wrapper {
+    display: flex;
+  }
+  
+ 
+  
+  #content {
+    width: 100%;
+    transition: all 0.3s;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  #content.active {
+    padding-left: 250px;
+  }
+  
+  header {
+    background-color: #1d056c;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .btn-toggle {
+    background: transparent;
+    border: none;
+    color: #1d4174;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .btn-toggle:focus {
+    outline: none;
+  }
+  
+  .container-fluid {
+    padding: 20px;
+  }
+  #sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    background: #1d4174;
+    transition: all 0.3s;
+    overflow-x: hidden;
+  }
+  
+  #sidebar.active {
+    left: 0;
+  }
+  
+  .sidebar-header {
+    text-align: center;
+    padding: 20px;
+    background: #1d4174;
+    color: #fff;
+  }
+  
+  #sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #1d4174;
+  }
+  
+  #sidebar ul p {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+  }
+  
+  #sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    color: #f3f2f6;
+  }
+  
+  #sidebar ul li a:hover {
+    color: #1d4174;
+    background: #f3f2f6;
+  }
+  
